@@ -74,5 +74,6 @@ win32 {
 # import dll file
 include($$PWD/../NConfig/NConfig_inc.pri)
 
+UI_DIR=./UI
 
 
