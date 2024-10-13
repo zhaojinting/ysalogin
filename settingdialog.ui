@@ -129,7 +129,7 @@ QToolBtton#instrumentToolButton{
 background-color: rgb(230, 230, 230);</string>
    </property>
    <property name="currentIndex">
-    <number>1</number>
+    <number>0</number>
    </property>
    <widget class="QWidget" name="page">
     <widget class="QLineEdit" name="ipEdit">
@@ -318,7 +318,7 @@ QPushButton::checked {
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">
     <rect>
-     <x>380</x>
+     <x>390</x>
      <y>410</y>
      <width>93</width>
      <height>32</height>
@@ -327,7 +327,7 @@ QPushButton::checked {
    <property name="font">
     <font>
      <family>微软雅黑</family>
-     <pointsize>10</pointsize>
+     <pointsize>9</pointsize>
      <weight>50</weight>
      <italic>false</italic>
      <bold>false</bold>
@@ -352,7 +352,7 @@ QPushButton::checked {
 }</string>
    </property>
    <property name="text">
-    <string>上一步</string>
+    <string>上一步1</string>
    </property>
   </widget>
   <widget class="QDialogButtonBox" name="buttonBox">
@@ -364,10 +364,17 @@ QPushButton::checked {
      <height>32</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>微软雅黑</family>
+     <pointsize>9</pointsize>
+     <weight>50</weight>
+     <italic>false</italic>
+     <bold>false</bold>
+    </font>
+   </property>
    <property name="styleSheet">
     <string notr="true">*{
-	font: 12pt &quot;微软雅黑&quot;;
-	
 	color: rgb(136, 136, 136);
 	border-radius: 5px;
 	margin-left:5px;
@@ -398,7 +405,7 @@ QPushButton::checked {
     <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
    </property>
   </widget>
-  <widget class="QToolButton" name="orterToolButton">
+  <widget class="QToolButton" name="ortherToolButton">
    <property name="enabled">
     <bool>false</bool>
    </property>

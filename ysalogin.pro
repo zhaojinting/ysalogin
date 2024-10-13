@@ -75,5 +75,5 @@ win32 {
 include($$PWD/../NConfig/NConfig_inc.pri)
 
 UI_DIR=./UI
-
+RC_FILE = res.rc
 

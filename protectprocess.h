@@ -78,10 +78,6 @@ private:
     */
     QString getApplicationFilePath();
     /**
-     * 获取进程保护dll
-    */
-    QString getApplicationDllPath();
-    /**
      * 获取当前进程id
     */
     qint64 getApplicationPid();

@@ -129,11 +129,6 @@ QString ProtectProcess::getApplicationFilePath()
     return QCoreApplication::applicationFilePath();
 }
 
-QString ProtectProcess::getApplicationDllPath()
-{
-    return QCoreApplication::applicationDirPath() + "/Protect.dll";
-}
-
 qint64 ProtectProcess::getApplicationPid() {
     return QCoreApplication::applicationPid();
 }

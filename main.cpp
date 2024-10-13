@@ -10,6 +10,10 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
+    //进程保护
+    ProtectProcess *p = new ProtectProcess();
+    p->run();
+
     // 设置统一的字体
     QFont font("微软雅黑", 10);
     a.setFont(font);
@@ -35,15 +39,10 @@ int main(int argc, char *argv[])
     // 去除工具栏
     w.setToolTip(nullptr);
     a.exec();
-
      // 窗口置顶
-     w.setWindowFlags( w.windowFlags() | Qt::WindowStaysOnTopHint);
-     //完成后关闭互斥锁
-     CloseHandle(hMutex);
-     hMutex = NULL;
+    w.setWindowFlags( w.windowFlags() | Qt::WindowStaysOnTopHint);
 
-//    ProtectProcess *p = new ProtectProcess();
-//    p->run();
-
-     // 创建 WorkerThread 对象
+    //完成后关闭互斥锁
+    CloseHandle(hMutex);
+    hMutex = NULL;
 }
