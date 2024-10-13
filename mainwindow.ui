@@ -1,0 +1,1140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1920</width>
+    <height>1080</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <property name="styleSheet">
+    <string notr="true">QWidget#centralWidget{background-image: url(:/res/images/bg.png);
+}</string>
+   </property>
+   <widget class="QFrame" name="frame">
+    <property name="geometry">
+     <rect>
+      <x>320</x>
+      <y>210</y>
+      <width>881</width>
+      <height>490</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QFrame#frame{
+	border-radius:20px;
+	background-color: rgba(250, 250, 250, 50);
+}</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <widget class="QFrame" name="frame_2">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>445</width>
+       <height>490</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">*{background-color: rgb(49, 116, 223);}
+
+QFrame#frame_2{
+	  border-top-left-radius: 20px;
+      border-bottom-left-radius: 20px;
+	  
+	
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,stop: 0 #3174DE, stop: 1 #256BC9);
+
+}</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <widget class="QFrame" name="frame_4">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>50</y>
+        <width>367</width>
+        <height>10</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(26, 94, 187);</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::HLine</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <widget class="QFrame" name="frame_6">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>-20</y>
+         <width>378</width>
+         <height>10</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(26, 94, 187);</string>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::HLine</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QToolButton" name="noticeButton">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>20</y>
+        <width>92</width>
+        <height>35</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>微软雅黑</family>
+        <pointsize>14</pointsize>
+        <weight>50</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">*{
+color: rgb(162, 201, 254);
+}
+
+
+QToolButton#noticeButton{
+
+	background-color: transparent; border: none;
+}
+
+
+
+#noticeButton:checked{
+	color: rgb(255, 255, 255);
+	border-width:3px;
+	border-style:none none solid none; 	
+	border-color:#FFFFFF;
+}</string>
+      </property>
+      <property name="text">
+       <string>仪器公告</string>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QToolButton" name="makehButton">
+      <property name="geometry">
+       <rect>
+        <x>240</x>
+        <y>20</y>
+        <width>98</width>
+        <height>35</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>微软雅黑</family>
+        <pointsize>14</pointsize>
+        <weight>50</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">*{
+color: rgb(162, 201, 254);
+}
+
+
+
+QToolButton#makehButton{
+	background-color: transparent; border: none;
+}
+
+
+
+QToolButton#makehButton:checked{
+	color: rgb(255, 255, 255);
+	border-width:3px;
+	border-style:none none solid none; 	
+	border-color:#FFFFFF;
+}</string>
+      </property>
+      <property name="text">
+       <string>预约记录</string>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QStackedWidget" name="stackedWidget_2">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>60</y>
+        <width>445</width>
+        <height>413</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
+      </property>
+      <widget class="QWidget" name="page_3">
+       <widget class="QLabel" name="noticeTitle">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>10</y>
+          <width>378</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <pointsize>14</pointsize>
+          <weight>50</weight>
+          <italic>false</italic>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgba(255, 255, 255, 200);
+font: 14pt &quot;微软雅黑&quot;;</string>
+        </property>
+        <property name="text">
+         <string>仪器设备管理办法通知</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+       <widget class="QPlainTextEdit" name="contentNotice">
+        <property name="geometry">
+         <rect>
+          <x>40</x>
+          <y>50</y>
+          <width>378</width>
+          <height>301</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <pointsize>10</pointsize>
+          <weight>50</weight>
+          <italic>false</italic>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">*{
+font: 10pt &quot;微软雅黑&quot;;
+color: rgba(255, 255, 255, 200);
+}
+
+QPlainTextEdit {
+    border: none;
+}
+
+QPlainTextEdit QScrollBar {
+    width: 0px;
+    height: 0px;
+}</string>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+        <property name="plainText">
+         <string>       为了规范仪器设备的使用与管理，使仪器设备发挥其应有的作用，根据公司仪器设备管理与使用方法，结合我单位仪器使用的具体情况，现通知如下:
+1、职责划分
+所有施工仪器统一由公司工程技术部管理，领用、归还仪器必须及时在领用登记表签字，相关负责人王科敏。
+2、管理办法
+1）所有仪器由公司年初开工之前统一进行复检
+2）各项目部领用仪器必须做到一对一责任制，谁借用谁归还，中途出现多个项目部互相转借公司不予认可。
+3）仪器使用人应爱护仪器设备，及时进行维护、保养，保证仪器的完整性(包括附属配件)。如在使用过程中出现丢失、损坏情况，应及时通知公司管理人员，并按仪器原价或维修价进行赔偿。
+4）领用仪器时领用人必须检查好仪器的完好与损坏程度，发现问题及时让公司进行复检，一但领用公司不予负责。
+6）为使仪器发挥应有作用，所有待使用完毕后及时归还并做归还登记，不得拖延归还时间，如有仪器不能归还也要回公司做继续使用登记相关手续与签字。如项目部有自购的仪器不在公司挂台帐的，发生的复检、损坏、维修、丢失等情况，公司不予负责。
+
+</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="author">
+        <property name="geometry">
+         <rect>
+          <x>240</x>
+          <y>390</y>
+          <width>182</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <pointsize>11</pointsize>
+          <weight>50</weight>
+          <italic>false</italic>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font: 11pt &quot;微软雅黑&quot;;
+background-color: rgba(255, 255, 255, 0);
+color: rgba(255, 255, 255, 200);</string>
+        </property>
+        <property name="text">
+         <string>工程技术部</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+       <widget class="QLabel" name="publishtime">
+        <property name="geometry">
+         <rect>
+          <x>250</x>
+          <y>370</y>
+          <width>182</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <pointsize>11</pointsize>
+          <weight>50</weight>
+          <italic>false</italic>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font: 11pt &quot;微软雅黑&quot;;
+background-color: rgba(255, 255, 255, 0);
+color: rgba(255, 255, 255, 200);</string>
+        </property>
+        <property name="text">
+         <string>2014年2月15日 </string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="page_4">
+       <widget class="QTableWidget" name="tableWidget">
+        <property name="geometry">
+         <rect>
+          <x>40</x>
+          <y>8</y>
+          <width>378</width>
+          <height>391</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <pointsize>10</pointsize>
+          <weight>50</weight>
+          <italic>false</italic>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">*{
+font: 10pt &quot;微软雅黑&quot;;
+color: rgb(255, 255, 255);
+}
+
+QTableWidget:Item
+{
+  	border-width:1px;
+	border-style:none none solid none; 	
+	border-color:#548AD5;	
+	text-align:center;
+   
+}
+QTableWidget::QHeaderView::section {background-color:#98ff9f;
+ text-align:center;
+}
+</string>
+        </property>
+        <property name="editTriggers">
+         <set>QAbstractItemView::NoEditTriggers</set>
+        </property>
+        <row>
+         <property name="text">
+          <string>1</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>2</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>3</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>4</string>
+         </property>
+        </row>
+        <column>
+         <property name="text">
+          <string>预约人</string>
+         </property>
+         <property name="font">
+          <font>
+           <family>微软雅黑</family>
+          </font>
+         </property>
+         <property name="background">
+          <color>
+           <red>0</red>
+           <green>85</green>
+           <blue>127</blue>
+          </color>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>所属单位</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>预约时间</string>
+         </property>
+        </column>
+        <item row="0" column="0">
+         <property name="text">
+          <string>张三</string>
+         </property>
+         <property name="textAlignment">
+          <set>AlignLeading|AlignVCenter</set>
+         </property>
+        </item>
+        <item row="0" column="1">
+         <property name="text">
+          <string>清华大学</string>
+         </property>
+         <property name="textAlignment">
+          <set>AlignLeading|AlignVCenter</set>
+         </property>
+        </item>
+        <item row="0" column="2">
+         <property name="text">
+          <string>07/03 15:30 - 07/03 16:30</string>
+         </property>
+        </item>
+        <item row="1" column="0">
+         <property name="text">
+          <string>李四</string>
+         </property>
+        </item>
+        <item row="1" column="1">
+         <property name="text">
+          <string>清华大学</string>
+         </property>
+        </item>
+        <item row="1" column="2">
+         <property name="text">
+          <string>07/03 15:30 - 07/03 16:30</string>
+         </property>
+        </item>
+        <item row="2" column="0">
+         <property name="text">
+          <string>王五</string>
+         </property>
+        </item>
+        <item row="2" column="1">
+         <property name="text">
+          <string>清华大学</string>
+         </property>
+        </item>
+        <item row="2" column="2">
+         <property name="text">
+          <string>07/03 15:30 - 07/03 16:30</string>
+         </property>
+        </item>
+        <item row="3" column="0">
+         <property name="text">
+          <string>赵六</string>
+         </property>
+        </item>
+        <item row="3" column="1">
+         <property name="text">
+          <string>清华大学</string>
+         </property>
+        </item>
+        <item row="3" column="2">
+         <property name="text">
+          <string>07/03 15:30 - 07/03 16:30</string>
+         </property>
+        </item>
+       </widget>
+      </widget>
+     </widget>
+    </widget>
+    <widget class="QFrame" name="frame_3">
+     <property name="geometry">
+      <rect>
+       <x>450</x>
+       <y>0</y>
+       <width>431</width>
+       <height>490</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">*{background-color: rgb(253, 253, 253);}
+QFrame#frame_3{
+	  border-top-right-radius: 20px;
+      border-bottom-right-radius: 20px;
+
+     
+
+}</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <widget class="QFrame" name="frame_5">
+      <property name="geometry">
+       <rect>
+        <x>380</x>
+        <y>0</y>
+        <width>49</width>
+        <height>49</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <widget class="QPushButton" name="qrCodeButton">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>-1</y>
+         <width>49</width>
+         <height>49</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">;
+border-image: url(:/res/images/wxlogin.png);
+border: none;</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QLabel" name="label_6">
+      <property name="geometry">
+       <rect>
+        <x>260</x>
+        <y>10</y>
+        <width>119</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(102, 102, 102);
+font: 10pt &quot;微软雅黑&quot;;</string>
+      </property>
+      <property name="text">
+       <string>扫码登录更快捷</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_7">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>20</y>
+        <width>70</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>微软雅黑</family>
+        <pointsize>10</pointsize>
+        <weight>50</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(102, 102, 102);
+font: 10pt &quot;微软雅黑&quot;;</string>
+      </property>
+      <property name="text">
+       <string>联网状态：</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="ipLabel">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>50</y>
+        <width>181</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(102, 102, 102);
+font: 10pt &quot;微软雅黑&quot;;</string>
+      </property>
+      <property name="text">
+       <string>ip地址：192.168.1.1</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="netWork">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>20</y>
+        <width>54</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>微软雅黑</family>
+        <pointsize>10</pointsize>
+        <weight>50</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 165, 0);
+font: 10pt &quot;微软雅黑&quot;;</string>
+      </property>
+      <property name="text">
+       <string>■ 离线</string>
+      </property>
+     </widget>
+     <widget class="QFrame" name="qcCodeFrame">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>99</y>
+        <width>431</width>
+        <height>331</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(253, 253, 253);</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <widget class="QLabel" name="qcCodeLabel">
+       <property name="geometry">
+        <rect>
+         <x>150</x>
+         <y>74</y>
+         <width>130</width>
+         <height>130</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_14">
+       <property name="geometry">
+        <rect>
+         <x>120</x>
+         <y>210</y>
+         <width>210</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>10</pointsize>
+         <weight>50</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 10pt &quot;微软雅黑&quot;;
+color: rgb(34, 34, 34);</string>
+       </property>
+       <property name="text">
+        <string>使用微信扫一扫马上登录</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QLabel" name="mcAdminIds">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>350</y>
+        <width>378</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>微软雅黑</family>
+        <pointsize>10</pointsize>
+        <weight>50</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(102, 102, 102);
+font: 10pt &quot;微软雅黑&quot;;
+</string>
+      </property>
+      <property name="text">
+       <string>仪器管理员：陈老师（13800138000）；王老师（13800138000）</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="mcName">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>400</y>
+        <width>201</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>微软雅黑</family>
+        <pointsize>10</pointsize>
+        <weight>50</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(102, 102, 102);
+font: 10pt &quot;微软雅黑&quot;;</string>
+      </property>
+      <property name="text">
+       <string>仪器名称：test仪器</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="mcNumber">
+      <property name="geometry">
+       <rect>
+        <x>220</x>
+        <y>400</y>
+        <width>201</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>微软雅黑</family>
+        <pointsize>10</pointsize>
+        <weight>50</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(102, 102, 102);
+font: 10pt &quot;微软雅黑&quot;;</string>
+      </property>
+      <property name="text">
+       <string>仪器编号：num89798973</string>
+      </property>
+     </widget>
+     <widget class="QStackedWidget" name="stackedWidget">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>149</y>
+        <width>431</width>
+        <height>201</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(253, 253, 253);</string>
+      </property>
+      <widget class="QWidget" name="page">
+       <widget class="QLineEdit" name="accountEdit">
+        <property name="geometry">
+         <rect>
+          <x>70</x>
+          <y>20</y>
+          <width>311</width>
+          <height>45</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <pointsize>10</pointsize>
+          <weight>50</weight>
+          <italic>false</italic>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLineEdit{
+font: 10pt &quot;微软雅黑&quot;;
+	border:none;
+	background-color: rgb(241, 244, 251);
+	border-radius:4px;
+	
+	padding-left:4px;
+}</string>
+        </property>
+        <property name="cursorPosition">
+         <number>0</number>
+        </property>
+        <property name="placeholderText">
+         <string> 请输入您的账号</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="passwordEdit">
+        <property name="geometry">
+         <rect>
+          <x>70</x>
+          <y>80</y>
+          <width>311</width>
+          <height>45</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLineEdit{
+	font: 10pt &quot;微软雅黑&quot;;
+	border:none;
+	background-color: rgb(241, 244, 251);
+	border-radius:4px;
+	padding-left:4px;
+}</string>
+        </property>
+        <property name="echoMode">
+         <enum>QLineEdit::Password</enum>
+        </property>
+        <property name="placeholderText">
+         <string> 请输入您的密码</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="loginButton">
+        <property name="geometry">
+         <rect>
+          <x>70</x>
+          <y>140</y>
+          <width>311</width>
+          <height>45</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <pointsize>12</pointsize>
+          <weight>50</weight>
+          <italic>false</italic>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">*{
+font: 12pt &quot;微软雅黑&quot;;
+	background-color: rgb(0, 65, 166);
+color: rgb(255, 255, 255);
+}
+
+QPushButton#loginButton{
+	border-radius: 10px;
+}
+
+QPushButton#loginButton:pressed{
+	border-radius:10px;
+	padding-top:3px;
+	padding-left:3px;
+}</string>
+        </property>
+        <property name="text">
+         <string>登录</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="page_2">
+       <widget class="QPushButton" name="dynamicLoginButton">
+        <property name="geometry">
+         <rect>
+          <x>70</x>
+          <y>110</y>
+          <width>311</width>
+          <height>45</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <pointsize>12</pointsize>
+          <weight>50</weight>
+          <italic>false</italic>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">*{
+font: 12pt &quot;微软雅黑&quot;;
+	background-color: rgb(0, 65, 166);
+color: rgb(255, 255, 255);
+}
+
+QPushButton#dynamicLoginButton{
+	border-radius: 10px;
+}
+
+QPushButton#dynamicLoginButton:pressed{
+	border-radius: 10px;
+	padding-top:3px;
+	padding-left:3px;
+}</string>
+        </property>
+        <property name="text">
+         <string>登录</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="dynamicEdit">
+        <property name="geometry">
+         <rect>
+          <x>70</x>
+          <y>30</y>
+          <width>311</width>
+          <height>45</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <pointsize>10</pointsize>
+          <weight>50</weight>
+          <italic>false</italic>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLineEdit{
+	font: 10pt &quot;微软雅黑&quot;;
+	border:none;
+	background-color: rgb(241, 244, 251);
+	border-radius:4px;
+	
+	padding-left:4px;
+}</string>
+        </property>
+        <property name="placeholderText">
+         <string>请输入动态密码</string>
+        </property>
+       </widget>
+      </widget>
+     </widget>
+     <widget class="QToolButton" name="accountLoginButton">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>90</y>
+        <width>100</width>
+        <height>35</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>微软雅黑</family>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">
+
+
+
+QToolButton#accountLoginButton{
+	color: rgb(34, 34, 34);
+	background-color: transparent; border: none;
+}
+
+
+QToolButton#accountLoginButton:checked{
+	color: rgb(0, 65, 166);
+	border-width:2px;
+	border-style:none none solid none; 	
+	border-color:#0041A6;
+}</string>
+      </property>
+      <property name="text">
+       <string>账号登录</string>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QToolButton" name="dynamicButton">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>90</y>
+        <width>100</width>
+        <height>35</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>微软雅黑</family>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">
+
+
+
+
+QToolButton#dynamicButton{
+	background-color: transparent; border: none;
+}
+
+QToolButton#dynamicButton:checked{
+	color: rgb(0, 65, 166);
+	border-width:2px;
+	border-style:none none solid none; 	
+	border-color:#0041A6;
+}</string>
+      </property>
+      <property name="text">
+       <string>动态登录</string>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <zorder>frame_5</zorder>
+     <zorder>label_6</zorder>
+     <zorder>label_7</zorder>
+     <zorder>ipLabel</zorder>
+     <zorder>netWork</zorder>
+     <zorder>mcAdminIds</zorder>
+     <zorder>mcName</zorder>
+     <zorder>mcNumber</zorder>
+     <zorder>stackedWidget</zorder>
+     <zorder>accountLoginButton</zorder>
+     <zorder>dynamicButton</zorder>
+     <zorder>qcCodeFrame</zorder>
+    </widget>
+   </widget>
+   <widget class="QLabel" name="label_5">
+    <property name="geometry">
+     <rect>
+      <x>720</x>
+      <y>1020</y>
+      <width>322</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">*{
+font: 10pt &quot;微软雅黑&quot;;
+	color: rgb(85, 85, 85);
+}</string>
+    </property>
+    <property name="text">
+     <string>技术支持：广州仪速安电子科技有限公司</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButtonShutdown">
+    <property name="geometry">
+     <rect>
+      <x>1760</x>
+      <y>1010</y>
+      <width>40</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButtonShutMenu">
+    <property name="geometry">
+     <rect>
+      <x>1810</x>
+      <y>1010</y>
+      <width>40</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <zorder>label_5</zorder>
+   <zorder>pushButtonShutdown</zorder>
+   <zorder>pushButtonShutMenu</zorder>
+   <zorder>frame</zorder>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections/>
+</ui>

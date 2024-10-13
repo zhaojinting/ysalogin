@@ -1,0 +1,35 @@
+<RCC>
+    <qresource prefix="/res">
+        <file>images/login.png</file>
+        <file>images/wxlogin.png</file>
+        <file>images/wxlogin@2x.png</file>
+        <file>images/lock.png</file>
+        <file>images/quit.png</file>
+        <file>images/setting.png</file>
+        <file>images/shutdown.png</file>
+        <file>images/unlock.png</file>
+        <file>images/close.png</file>
+        <file>images/about.png</file>
+        <file>images/qrCode.png</file>
+        <file>images/qrCode@2x.png</file>
+        <file>images/password.png</file>
+        <file>images/user.png</file>
+        <file>images/bg.png</file>
+        <file>images/bg@2x.png</file>
+        <file>images/loginbg@2x.png</file>
+        <file>images/16.png</file>
+        <file>images/24.png</file>
+        <file>images/32.png</file>
+        <file>images/48.png</file>
+        <file>images/64.png</file>
+        <file>images/96.png</file>
+        <file>images/128.png</file>
+        <file>images/256.png</file>
+        <file>images/512.png</file>
+        <file>images/1024.png</file>
+        <file>images/menu_hover.svg</file>
+        <file>images/shutdown.svg</file>
+        <file>images/shutdown_hover.svg</file>
+        <file>images/menu.svg</file>
+    </qresource>
+</RCC>
