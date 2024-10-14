@@ -5,14 +5,19 @@
 // #include <windows.h>
 
 #include "protectprocess.h"
+#include "protecttaskmgr.h"
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
     //进程保护
-    ProtectProcess *p = new ProtectProcess();
-    p->run();
+//    ProtectProcess *p = new ProtectProcess();
+//    p->run();
+
+    //其它桌面上其它应用
+    ProtectTaskmgr *c = new ProtectTaskmgr();
+    c->getWindowHandleList();
 
     // 设置统一的字体
     QFont font("微软雅黑", 10);
@@ -29,6 +34,9 @@ int main(int argc, char *argv[])
 
     // 在此处写你的应用程序逻辑代码
     MainWindow w;
+    w.setWindowIcon(QIcon(":/res/images/1024.png"));
+    // 设置窗口标题
+    w.setWindowTitle(QStringFromLocalOrUtf8("仪器猫"));
     w.show();
     //程序启动就全屏显示
     w.showFullScreen();

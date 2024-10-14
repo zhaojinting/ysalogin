@@ -19,10 +19,6 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
-    // 设置窗口标题
-    setWindowTitle(QStringFromLocalOrUtf8("仪器猫"));
-    setWindowIcon(QIcon(":/res/images/1024.png"));
-
     ui->setupUi(this);
 
     // 初始化自适应
