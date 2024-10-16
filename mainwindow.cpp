@@ -1,4 +1,4 @@
-﻿#include "mainwindow.h"
+#include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <windows.h>
 
@@ -98,7 +98,7 @@ void MainWindow::initSettins() {
         qDebug() << QStringFromLocalOrUtf8("配置文件失败并自动创建，在此可以弹出配置窗口");
         confirmSettins();
     } else {
-        //d->clearConfig();
+        d->clearConfig();
         //如果存在是初始化参数
         s.initConfig();
         qDebug() << QString("qDebug output:%1").arg(s.getServers());

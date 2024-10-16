@@ -1,7 +1,8 @@
-﻿#include "locklogin.h"
+#include "locklogin.h"
 #include <QSharedMemory>
 /**
  * 登录控制界面
+ *
 */
 LockLogin::LockLogin(Ui::MainWindow * ui, QMainWindow* mainWindow):
     exUI(ui)
@@ -120,7 +121,7 @@ void LockLogin::onPushButtonClicked()
 {
     if(exUI->qcCodeFrame->isHidden()) {
         exUI->qcCodeFrame->show();
-        exUI->label_6->setText(QStringFromLocalOrUtf8("点击切换账号登录"));
+        exUI->label_6->setText(QStringFromLocalOrUtf8("切换账号登录"));
 
         exUI->accountEdit->clearFocus();
         exUI->dynamicEdit->setFocus();
@@ -187,7 +188,7 @@ void LockLogin::onPushButtonClicked()
         });
     } else {
         exUI->qcCodeFrame->hide();
-        exUI->label_6->setText(QStringFromLocalOrUtf8("扫码登录更快捷"));
+        exUI->label_6->setText(QStringFromLocalOrUtf8("切换扫码登录"));
 
         exUI->dynamicEdit->clearFocus();
         exUI->accountEdit->setFocus();

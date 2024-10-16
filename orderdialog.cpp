@@ -1,4 +1,4 @@
-﻿#include "orderdialog.h"
+#include "orderdialog.h"
 #include "ui_orderdialog.h"
 
 OrderDialog::OrderDialog(QWidget *parent)
@@ -17,7 +17,7 @@ OrderDialog::OrderDialog(QWidget *parent)
     // 去掉问号，只保留关闭
     setWindowFlags(windowFlags()&~Qt::WindowContextHelpButtonHint);
     // 设置窗口标题
-    setWindowTitle(QString::fromLocal8Bit("我的订单"));
+    setWindowTitle("我的订单");
 
     // 使窗口在屏幕中心显示
     QScreen *mScreen = QGuiApplication::screens().first();
@@ -33,7 +33,7 @@ OrderDialog::OrderDialog(QWidget *parent)
 
     QStringList headerLabels;
     // 设置表格的列标题
-    headerLabels << QString::fromLocal8Bit("订单号") << QString::fromLocal8Bit("用户名") << QString::fromLocal8Bit("所在部门") << QString::fromLocal8Bit("课题名称") << QString::fromLocal8Bit("开始时间") << QString::fromLocal8Bit("结束时间")<< QString::fromLocal8Bit("上机类型") << QString::fromLocal8Bit("操作");
+    headerLabels << "订单号" << "用户名" << "所在部门" << "课题名称" << "开始时间" << "结束时间"<< "上机类型" << "操作";
     // 设置一些表格样式
     ui->tableWidget->setHorizontalHeaderLabels(headerLabels);
     ui->tableWidget->setFrameStyle(QFrame::NoFrame);
@@ -84,7 +84,7 @@ bool OrderDialog::initOrder(){
     if(token.isEmpty()){
         ui->tableWidget->clearContents();  // 清除表格内的数据，但保留表头
         ui->tableWidget->setRowCount(1);  // 设置行数为1
-        QTableWidgetItem* item = new QTableWidgetItem(QString::fromLocal8Bit("数据异常，缺少token"));
+        QTableWidgetItem* item = new QTableWidgetItem("数据异常，缺少token");
         ui->tableWidget->setItem(0, 0, item);  // 将"暂无数据"放置在第一行第一列的单
 
     }else{
@@ -97,7 +97,7 @@ bool OrderDialog::initOrder(){
             }else{
                 ui->tableWidget->clearContents();  // 清除表格内的数据，但保留表头
                 ui->tableWidget->setRowCount(1);  // 设置行数为1
-                QTableWidgetItem* item = new QTableWidgetItem(QString::fromLocal8Bit("数据异常"));
+                QTableWidgetItem* item = new QTableWidgetItem("数据异常");
                 ui->tableWidget->setItem(0, 0, item);  // 将"暂无数据"放置在第一行第一列的单元格中
             }
 
@@ -119,7 +119,7 @@ void OrderDialog::initTableWidget(const QJsonObject& jsonData, bool adjustTableS
     tableWidget->setColumnCount(columnCount);
     if(rowCount>0){
         isOrder=true;
-        QString label = QString::fromLocal8Bit("您当前有 %1 个订单，是否需要上机？").arg(rowCount);
+        QString label = QStringFromLocalOrUtf8("您当前有 %1 个订单，是否需要上机？").arg(rowCount);
         ui->label_2->setText(label);
     }
     int row = 0;
@@ -143,10 +143,10 @@ void OrderDialog::initTableWidget(const QJsonObject& jsonData, bool adjustTableS
             tableWidget->setItem(row, 3, new QTableWidgetItem(classgroupName));
             tableWidget->setItem(row, 4, new QTableWidgetItem(startTime));
             tableWidget->setItem(row, 5, new QTableWidgetItem(endTime));
-            tableWidget->setItem(row, 6, new QTableWidgetItem(QString::fromLocal8Bit("送样订单")));
+            tableWidget->setItem(row, 6, new QTableWidgetItem("送样订单"));
 
             // 创建并设置按钮
-            QPushButton* button = new QPushButton(QString::fromLocal8Bit("上机"));
+            QPushButton* button = new QPushButton("上机");
             button->setProperty("orderid", orderid); // 将orderid作为按钮的自定义属性
             button->setProperty("endTime",endTime);
             button->setStyleSheet("*{padding:5px;color: rgb(136, 136, 136);border-radius: 3px;background-color: rgb(255, 255, 255);border: 1px solid gray;}QPushButton:hover{color: rgb(0, 85, 255);border: 1px solid blue;}QPushButton::checked {background-color: blue;border: 1px solid blue;color: rgb(255, 255, 255);}");
@@ -186,11 +186,11 @@ void OrderDialog::initTableWidget(const QJsonObject& jsonData, bool adjustTableS
             tableWidget->setItem(row, 3, new QTableWidgetItem(classgroupName));
             tableWidget->setItem(row, 4, new QTableWidgetItem(startTime));
             tableWidget->setItem(row, 5, new QTableWidgetItem(endTime));
-            tableWidget->setItem(row, 6, new QTableWidgetItem(QString::fromLocal8Bit("上机订单")));
+            tableWidget->setItem(row, 6, new QTableWidgetItem("上机订单"));
 
 
             // 创建并设置按钮
-            QPushButton* button = new QPushButton(QString::fromLocal8Bit("上机"));
+            QPushButton* button = new QPushButton("上机");
             button->setProperty("endTime",endTime);
             button->setProperty("orderid", orderid); // 将orderid作为按钮的自定义属性
             button->setStyleSheet("*{color: rgb(136, 136, 136);border-radius: 3px;background-color: rgb(255, 255, 255);border: 1px solid gray;}QPushButton:hover{color: rgb(0, 85, 255);border: 1px solid blue;}QPushButton::checked {background-color: blue;border: 1px solid blue;color: rgb(255, 255, 255);}");
@@ -241,7 +241,7 @@ void OrderDialog::operate(QString token,QString type,QString orderId,QString end
     httpUtil->get(operateUrl,parameters, [=](int code, QString msg, QJsonObject result) {
         if (code==1) {
             qDebug()<< "YES";
-            SystemTrayGlobal::getSystemTrayIcon()->showMessage(QString::fromLocal8Bit("温馨提示"), msg, QSystemTrayIcon::Information, 800);
+            SystemTrayGlobal::getSystemTrayIcon()->showMessage("温馨提示", msg, QSystemTrayIcon::Information, 800);
             this->hide();
 
             //操作托盘结束
@@ -253,7 +253,7 @@ void OrderDialog::operate(QString token,QString type,QString orderId,QString end
             reminderThread.setTargetTime(targetTime);
 
             QObject::connect(&reminderThread, &ReminderThread::reminderTriggered, []() {
-                SystemTrayGlobal::getSystemTrayIcon()->showMessage(QString::fromLocal8Bit("温馨提示"), QString::fromLocal8Bit("您的订单已经超时！"), QSystemTrayIcon::Information, 800);
+                SystemTrayGlobal::getSystemTrayIcon()->showMessage("温馨提示", "您的订单已经超时！", QSystemTrayIcon::Information, 800);
                 qDebug() << "Reminder triggered!";
             });
 
@@ -261,7 +261,7 @@ void OrderDialog::operate(QString token,QString type,QString orderId,QString end
 
         }
         else {
-            message.alert(this, QString::fromLocal8Bit("上机机失败！参数异常"));
+            message.alert(this, "上机机失败！参数异常");
             this->hide();
         }});
 

@@ -1,8 +1,9 @@
-﻿#include "settingdialog.h"
+#include "settingdialog.h"
 #include "ui_settingdialog.h"
 
 #include <QGuiApplication>
 #include <QScreen>
+
 
 SettingDialog::SettingDialog(QWidget *parent) :
     QDialog(parent),
@@ -32,6 +33,9 @@ SettingDialog::SettingDialog(QWidget *parent) :
     ui->radioButton1->setChecked(true);
     ui->urlEdit->setText("https://");
     ui->radioButton2->setEnabled(false);
+
+    ui->radioButton2->setVisible(false);
+    ui->ipEdit->setVisible(false);
 
     ui->serverToolButton->setChecked(true);
     ui->buttonBox->button(QDialogButtonBox::Ok)->setText(QStringFromLocalOrUtf8("下一步"));
@@ -108,6 +112,7 @@ void SettingDialog::onInstrumentToolButtonClicked()
     ui->stackedWidget->setCurrentIndex(1);
     ui->instrumentToolButton->setChecked(true);
     ui->serverToolButton->setChecked(false);
+    ui->ortherToolButton->setChecked(false);
 
 
     //获取仪器默认选项
@@ -148,7 +153,7 @@ void SettingDialog::onButtonBoxClicked()
             ui->stackedWidget->setCurrentIndex(1);
             ui->instrumentToolButton->setChecked(true);
             ui->serverToolButton->setChecked(false);
-            ui->buttonBox->button(QDialogButtonBox::Ok)->setText(QStringFromLocalOrUtf8("确定"));
+            ui->buttonBox->button(QDialogButtonBox::Ok)->setText(QStringFromLocalOrUtf8("下一步"));
             ui->pushButton->setVisible(true);
             step = 1;
             //获取仪器
@@ -167,7 +172,7 @@ void SettingDialog::onButtonBoxClicked()
         if(!instrumentId.isEmpty()) {
 
             if(checkedId==-1){
-
+                qDebug()<<"请至少绑定一个仪器！";
                 message.alert(this, QStringFromLocalOrUtf8("请至少绑定一个仪器！"));
                 return;
             }else{
@@ -179,10 +184,21 @@ void SettingDialog::onButtonBoxClicked()
                     Database::getDatabase()->setConfig("server", server);
                     Database::getDatabase()->setConfig("mac", mac);
                     Database::getDatabase()->setConfig("instrumentId", instrumentId);
-                    message.alert(this, QStringFromLocalOrUtf8("初始化数据成功！"));
-                    accept();
+
+                    step=2;
+
+                    ui->stackedWidget->setCurrentIndex(2);
+                    ui->pushButton->setVisible(true);
+                    ui->buttonBox->button(QDialogButtonBox::Ok)->setText(QStringFromLocalOrUtf8("确定"));
+
+                    //message.alert(this, QStringFromLocalOrUtf8("初始化数据成功！"));
+                    //accept();
                 }else{
                     message.alert(this, QStringFromLocalOrUtf8("绑定设备失败！"));
+                    ui->stackedWidget->setCurrentIndex(2);
+                    ui->pushButton->setVisible(true);
+                    ui->buttonBox->button(QDialogButtonBox::Ok)->setText(QStringFromLocalOrUtf8("确定"));
+                    step=2;
 
                 }
 
@@ -377,10 +393,18 @@ void SettingDialog::initDefaultMachine(){
 void SettingDialog::on_pushButton_clicked()
 {
     ui->buttonBox->button(QDialogButtonBox::Ok)->setText(QStringFromLocalOrUtf8("下一步"));
-    step=0;
+    if(step==1){
+        ui->stackedWidget->setCurrentIndex(0);
+        step=0;
+    }else if(step==2){
+        step=1;
+        ui->pushButton->setVisible(true);
+        ui->stackedWidget->setCurrentIndex(1);
+    }
     ui->pushButton->setVisible(false);
-    ui->stackedWidget->setCurrentIndex(0);
+
     ui->serverToolButton->setChecked(true);
     ui->instrumentToolButton->setChecked(false);
+
 
 }

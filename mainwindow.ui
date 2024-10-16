@@ -573,9 +573,9 @@ border: none;</string>
      <widget class="QLabel" name="label_6">
       <property name="geometry">
        <rect>
-        <x>260</x>
+        <x>269</x>
         <y>10</y>
-        <width>119</width>
+        <width>110</width>
         <height>41</height>
        </rect>
       </property>
@@ -584,7 +584,7 @@ border: none;</string>
 font: 10pt &quot;微软雅黑&quot;;</string>
       </property>
       <property name="text">
-       <string>扫码登录更快捷</string>
+       <string>切换扫码登录</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_7">

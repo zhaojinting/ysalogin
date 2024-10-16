@@ -14,6 +14,12 @@ TARGET = ysalogin
 TEMPLATE = app
 
 
+FORMS += \
+    mainwindow.ui \
+    orderdialog.ui \
+    settingdialog.ui \
+    confirmationialog.ui
+
 SOURCES += main.cpp\
         mainwindow.cpp \
     systemtray.cpp \
