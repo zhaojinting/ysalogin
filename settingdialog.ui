@@ -320,7 +320,7 @@ QPushButton::checked {
       <rect>
        <x>30</x>
        <y>20</y>
-       <width>91</width>
+       <width>81</width>
        <height>41</height>
       </rect>
      </property>
@@ -367,20 +367,47 @@ QPushButton::checked {
       </rect>
      </property>
     </widget>
+    <widget class="QLabel" name="userlabel">
+     <property name="geometry">
+      <rect>
+       <x>120</x>
+       <y>20</y>
+       <width>81</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>宋体</family>
+       <pointsize>10</pointsize>
+       <weight>50</weight>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
    </widget>
   </widget>
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">
     <rect>
      <x>360</x>
-     <y>400</y>
+     <y>401</y>
      <width>93</width>
      <height>41</height>
     </rect>
    </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
    <property name="font">
     <font>
-     <family>微软雅黑</family>
+     <family>宋体</family>
      <pointsize>9</pointsize>
      <weight>50</weight>
      <italic>false</italic>
@@ -389,8 +416,10 @@ QPushButton::checked {
    </property>
    <property name="styleSheet">
     <string notr="true">*{	
-	color: rgb(0, 0, 0);
+	color: rgb(136, 136, 136);
 	border-radius: 5px;
+	margin-left:5px;
+	padding:10px 20px;
 	background-color: rgb(255, 255, 255);
 	border: 1px solid gray;
 
@@ -415,7 +444,7 @@ QPushButton::checked {
     <rect>
      <x>460</x>
      <y>401</y>
-     <width>181</width>
+     <width>185</width>
      <height>41</height>
     </rect>
    </property>
@@ -460,7 +489,7 @@ QPushButton::checked {
     <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
    </property>
   </widget>
-  <widget class="QToolButton" name="ortherToolButton">
+  <widget class="QToolButton" name="otherToolButton">
    <property name="enabled">
     <bool>false</bool>
    </property>

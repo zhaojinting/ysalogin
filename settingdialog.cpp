@@ -41,6 +41,14 @@ SettingDialog::SettingDialog(QWidget *parent) :
     ui->buttonBox->button(QDialogButtonBox::Ok)->setText(QStringFromLocalOrUtf8("下一步"));
     ui->buttonBox->button(QDialogButtonBox::Cancel)->setText(QStringFromLocalOrUtf8("取消"));
 
+    //初始化当前登录用户名
+
+    QString username=Database::getDatabase()->getUser("admin");
+    qDebug()<<"username"<<username;
+
+    ui->userlabel->setText(username);
+
+
     // 创建QTableWidget
     ui->tableWidget->setColumnCount(4);
 
@@ -112,7 +120,7 @@ void SettingDialog::onInstrumentToolButtonClicked()
     ui->stackedWidget->setCurrentIndex(1);
     ui->instrumentToolButton->setChecked(true);
     ui->serverToolButton->setChecked(false);
-    ui->ortherToolButton->setChecked(false);
+    ui->otherToolButton->setChecked(false);
 
 
     //获取仪器默认选项
@@ -189,7 +197,7 @@ void SettingDialog::onButtonBoxClicked()
 
                     ui->stackedWidget->setCurrentIndex(2);
                     ui->pushButton->setVisible(true);
-                    ui->buttonBox->button(QDialogButtonBox::Ok)->setText(QStringFromLocalOrUtf8("确定"));
+                    ui->buttonBox->button(QDialogButtonBox::Ok)->setText(QStringFromLocalOrUtf8("下一步"));
 
                     //message.alert(this, QStringFromLocalOrUtf8("初始化数据成功！"));
                     //accept();
@@ -197,7 +205,7 @@ void SettingDialog::onButtonBoxClicked()
                     message.alert(this, QStringFromLocalOrUtf8("绑定设备失败！"));
                     ui->stackedWidget->setCurrentIndex(2);
                     ui->pushButton->setVisible(true);
-                    ui->buttonBox->button(QDialogButtonBox::Ok)->setText(QStringFromLocalOrUtf8("确定"));
+                    ui->buttonBox->button(QDialogButtonBox::Ok)->setText(QStringFromLocalOrUtf8("下一步"));
                     step=2;
 
                 }
@@ -395,14 +403,13 @@ void SettingDialog::on_pushButton_clicked()
     ui->buttonBox->button(QDialogButtonBox::Ok)->setText(QStringFromLocalOrUtf8("下一步"));
     if(step==1){
         ui->stackedWidget->setCurrentIndex(0);
+        ui->pushButton->setVisible(false);
         step=0;
     }else if(step==2){
         step=1;
         ui->pushButton->setVisible(true);
         ui->stackedWidget->setCurrentIndex(1);
     }
-    ui->pushButton->setVisible(false);
-
     ui->serverToolButton->setChecked(true);
     ui->instrumentToolButton->setChecked(false);
 
