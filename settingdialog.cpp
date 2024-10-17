@@ -1,6 +1,7 @@
 #include "settingdialog.h"
 #include "ui_settingdialog.h"
 
+
 #include <QGuiApplication>
 #include <QScreen>
 
@@ -129,8 +130,12 @@ void SettingDialog::onInstrumentToolButtonClicked()
 void SettingDialog::onButtonBoxClicked()
 {
     QString url=ui->urlEdit->text();
+    url=url+"/api/pc";
     QString ip=ui->ipEdit->text();
     QString tempserver;
+    qDebug()<<"************************************************url="<<url;
+
+
     if(step==0){
 
 
