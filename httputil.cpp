@@ -1,4 +1,4 @@
-﻿
+
 #include "httputil.h"
 #include <QJsonDocument>
 #include <QMessageBox>
@@ -92,7 +92,7 @@ void HttpUtil::postAsyn(QString url, QUrlQuery postData,
 
             if (err == QNetworkReply::NoError) {
                 onResponseResult(statusCode.toInt(), code, message, doc);
-                qDebug() << "输出网络请求的整体响应结果：" << message;
+                qDebug() << "输出网络请求的整体响应结果：" << doc;
             } else {
                 qDebug() << "网络请求发生异常";
                 onResponseResult(statusCode.toInt(), -1, reason.toString(), doc);

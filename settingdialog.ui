@@ -47,20 +47,25 @@ background-color: rgb(255, 255, 255);
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">*{
-color: rgb(0, 0, 0);
+    <string notr="true">* {
+  color: rgb(0, 0, 0);
 }
 
-QToolBtton#serverToolButton{
-	background-color: transparent; border: none;
+QToolButton {
+  background-color: transparent;
+  border: none;
 }
-#serverToolButton::checked{
-	
-   	color: rgb(0, 85, 255);
-	border-width:2px;	
-	border-color: rgb(0, 85, 255);
+
+QToolButton:checked {
+  color: rgb(0, 85, 255);
+  border: 2px solid rgb(0, 85, 255);
+  border-radius: 4px; /* 可选：添加圆角 */
 }
-</string>
+
+/* 可选：添加悬停效果 */
+QToolButton#serverToolButton:hover {
+  background-color: rgba(0, 85, 255, 0.1);
+}</string>
    </property>
    <property name="text">
     <string>服务设置</string>
@@ -94,18 +99,24 @@ QToolBtton#serverToolButton{
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">*{
-color: rgb(0, 0, 0);
+    <string notr="true">* {
+  color: rgb(0, 0, 0);
 }
 
-QToolBtton#instrumentToolButton{
-	background-color: transparent; border: none;
+QToolButton {
+  background-color: transparent;
+  border: none;
 }
 
-#instrumentToolButton::checked {
-	color: rgb(0, 85, 255);
-	border-width:2px;	
-	border-color: rgb(0, 85, 255);
+QToolButton:checked {
+  color: rgb(0, 85, 255);
+  border: 2px solid rgb(0, 85, 255);
+  border-radius: 4px; /* 可选：添加圆角 */
+}
+
+/* 可选：添加悬停效果 */
+QToolButton#instrumentToolButton:hover {
+  background-color: rgba(0, 85, 255, 0.1);
 }</string>
    </property>
    <property name="text">
@@ -320,7 +331,7 @@ QPushButton::checked {
       <rect>
        <x>30</x>
        <y>20</y>
-       <width>81</width>
+       <width>451</width>
        <height>41</height>
       </rect>
      </property>
@@ -333,59 +344,20 @@ QPushButton::checked {
       </font>
      </property>
      <property name="text">
-      <string>当前账号：</string>
+      <string>填写说明：请填写需要随程序关闭的进程名，以逗号隔开！</string>
      </property>
     </widget>
-    <widget class="QLabel" name="label_2">
+    <widget class="QTextEdit" name="taskTextEdit">
      <property name="geometry">
       <rect>
        <x>30</x>
-       <y>80</y>
-       <width>91</width>
-       <height>31</height>
+       <y>60</y>
+       <width>451</width>
+       <height>281</height>
       </rect>
      </property>
-     <property name="font">
-      <font>
-       <family>宋体</family>
-       <pointsize>10</pointsize>
-       <weight>50</weight>
-       <bold>false</bold>
-      </font>
-     </property>
-     <property name="text">
-      <string>关闭进程：</string>
-     </property>
-    </widget>
-    <widget class="QListWidget" name="listWidget">
-     <property name="geometry">
-      <rect>
-       <x>120</x>
-       <y>80</y>
-       <width>256</width>
-       <height>192</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QLabel" name="userlabel">
-     <property name="geometry">
-      <rect>
-       <x>120</x>
-       <y>20</y>
-       <width>81</width>
-       <height>41</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <family>宋体</family>
-       <pointsize>10</pointsize>
-       <weight>50</weight>
-       <bold>false</bold>
-      </font>
-     </property>
-     <property name="text">
-      <string/>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255);</string>
      </property>
     </widget>
    </widget>
@@ -511,18 +483,24 @@ QPushButton::checked {
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">*{
-color: rgb(0, 0, 0);
+    <string notr="true">* {
+  color: rgb(0, 0, 0);
 }
 
-QToolBtton#instrumentToolButton{
-	background-color: transparent; border: none;
+QToolButton {
+  background-color: transparent;
+  border: none;
 }
 
-#instrumentToolButton::checked {
-	color: rgb(0, 85, 255);
-	border-width:2px;	
-	border-color: rgb(0, 85, 255);
+QToolButton:checked {
+  color: rgb(0, 85, 255);
+  border: 2px solid rgb(0, 85, 255);
+  border-radius: 4px; /* 可选：添加圆角 */
+}
+
+/* 可选：添加悬停效果 */
+QToolButton#otherToolButton:hover {
+  background-color: rgba(0, 85, 255, 0.1);
 }</string>
    </property>
    <property name="text">

@@ -1,4 +1,4 @@
-﻿#ifndef SETTINGDIALOG_H
+#ifndef SETTINGDIALOG_H
 #define SETTINGDIALOG_H
 
 #include <QDialog>
@@ -9,12 +9,16 @@
 #include <QTableWidget>
 #include <QJsonArray>
 #include <QMapIterator>
+#include <QListWidget>
 #include "message.h"
 #include "database.h"
 #include "networkutil.h"
 #include "settings.h"
 #include "httputil.h"
 #include "networkutil.h"
+#include "protecttaskmgr.h"
+#include <QMetaType>
+Q_DECLARE_METATYPE(HWND)
 
 namespace Ui {
 class SettingDialog;
@@ -31,6 +35,8 @@ public:
 private slots:
     void on_pushButton_clicked();
 
+    void on_searchMachine_clicked();
+
 private:
     Ui::SettingDialog *ui;
     Message message;
@@ -40,6 +46,11 @@ private:
     QMap<int, QString> map; // 用于关联按钮的id和隐藏值
     bool isSuccess=false;
     QString server;
+
+    //设置进程列表
+    ProtectTaskmgr *protectTaskmgr;
+    void initWindowList();
+    QStringList selectedWindows;
 
     // 步骤
     int step =0;

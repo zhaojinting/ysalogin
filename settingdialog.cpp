@@ -6,12 +6,17 @@
 #include <QScreen>
 
 
+
+
 SettingDialog::SettingDialog(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::SettingDialog)
+    ui(new Ui::SettingDialog),protectTaskmgr(new ProtectTaskmgr(this))
 {
 
     ui->setupUi(this);
+
+    // 注册 HWND 类型
+    static int hwndMetaTypeId = qRegisterMetaType<HWND>("HWND");
     // 将窗口永远置于上层可见 不会被遮盖
 	setWindowFlags(windowFlags() | Qt::WindowStaysOnTopHint);
 	// 阻塞除当前窗口之外的所有窗口
@@ -28,8 +33,7 @@ SettingDialog::SettingDialog(QWidget *parent) :
 	this->move((mScreen->geometry().width() - this->width()) / 2, (mScreen->geometry().height() - this->height()) / 2);
 
     // 默认值
-    ui->serverToolButton->setDisabled(true);
-    ui->instrumentToolButton->setDisabled(true);
+
 
     ui->radioButton1->setChecked(true);
     ui->urlEdit->setText("https://");
@@ -38,16 +42,12 @@ SettingDialog::SettingDialog(QWidget *parent) :
     ui->radioButton2->setVisible(false);
     ui->ipEdit->setVisible(false);
 
-    ui->serverToolButton->setChecked(true);
+    ui->serverToolButton->setStyleSheet("color: blue;");
+
+    ui->instrumentToolButton->setCheckable(true);
+    ui->otherToolButton->setCheckable(true);
     ui->buttonBox->button(QDialogButtonBox::Ok)->setText(QStringFromLocalOrUtf8("下一步"));
     ui->buttonBox->button(QDialogButtonBox::Cancel)->setText(QStringFromLocalOrUtf8("取消"));
-
-    //初始化当前登录用户名
-
-    QString username=Database::getDatabase()->getUser("admin");
-    qDebug()<<"username"<<username;
-
-    ui->userlabel->setText(username);
 
 
     // 创建QTableWidget
@@ -57,8 +57,11 @@ SettingDialog::SettingDialog(QWidget *parent) :
     ui->tableWidget->verticalHeader()->setVisible(false);
 
 
+    //初始化进程列表
+
+
     QStringList headerLabels;
-    headerLabels << " " << QStringFromLocalOrUtf8("仪器名称") << QStringFromLocalOrUtf8("管理员") << QStringFromLocalOrUtf8("所属单位");
+    headerLabels << " " << QStringFromLocalOrUtf8("仪器名称") << QStringFromLocalOrUtf8("仪器编号") << QStringFromLocalOrUtf8("所属单位");
     ui->tableWidget->setHorizontalHeaderLabels(headerLabels);
     // 设置一些表格样式
     ui->tableWidget->setFrameStyle(QFrame::NoFrame);
@@ -92,6 +95,8 @@ SettingDialog::SettingDialog(QWidget *parent) :
     connect(ui->buttonBox, &QDialogButtonBox::accepted, this, &SettingDialog::onButtonBoxClicked);
     connect(ui->buttonBox, &QDialogButtonBox::rejected, this, &QDialog::reject);
 
+    //connect(ui->searchMachine, &QPushButton::clicked, this, &SettingDialog::onSearchMachineClicked);
+
     //connect(ui->testButton, &QPushButton::clicked, this, &SettingDialog::onButtonTestClicked);
     httpUtil=new HttpUtil();
     //初始化已经配置的数据
@@ -101,13 +106,13 @@ SettingDialog::SettingDialog(QWidget *parent) :
 SettingDialog::~SettingDialog()
 {
     delete ui;
+    delete protectTaskmgr;
+
 }
 
 void SettingDialog::onServerToolButtonClicked()
 {
-    ui->stackedWidget->setCurrentIndex(0);
-    ui->serverToolButton->setChecked(true);
-    ui->instrumentToolButton->setChecked(false);
+
 }
 
 void SettingDialog::onInstrumentToolButtonClicked()
@@ -119,7 +124,10 @@ void SettingDialog::onInstrumentToolButtonClicked()
 
     }
     ui->stackedWidget->setCurrentIndex(1);
-    ui->instrumentToolButton->setChecked(true);
+    ui->instrumentToolButton->setStyleSheet("color: blue;");
+    ui->serverToolButton->setStyleSheet("color: black;");
+
+
     ui->serverToolButton->setChecked(false);
     ui->otherToolButton->setChecked(false);
 
@@ -166,6 +174,8 @@ void SettingDialog::onButtonBoxClicked()
             ui->stackedWidget->setCurrentIndex(1);
             ui->instrumentToolButton->setChecked(true);
             ui->serverToolButton->setChecked(false);
+            ui->instrumentToolButton->setStyleSheet("color: blue;");
+            ui->serverToolButton->setStyleSheet("color: black;");
             ui->buttonBox->button(QDialogButtonBox::Ok)->setText(QStringFromLocalOrUtf8("下一步"));
             ui->pushButton->setVisible(true);
             step = 1;
@@ -174,7 +184,7 @@ void SettingDialog::onButtonBoxClicked()
         }
 
 
-    } else {
+    } else if(step==1){
         // getInstrumentList(tempserver);
         int checkedId = buttonGroup->checkedId(); // 获取选中单选框的id
         qDebug()<<"checkedId"<<checkedId;
@@ -203,6 +213,8 @@ void SettingDialog::onButtonBoxClicked()
                     ui->stackedWidget->setCurrentIndex(2);
                     ui->pushButton->setVisible(true);
                     ui->buttonBox->button(QDialogButtonBox::Ok)->setText(QStringFromLocalOrUtf8("下一步"));
+                    ui->otherToolButton->setStyleSheet("color: blue;");
+                    ui->instrumentToolButton->setStyleSheet("color: black;");
 
                     //message.alert(this, QStringFromLocalOrUtf8("初始化数据成功！"));
                     //accept();
@@ -211,6 +223,8 @@ void SettingDialog::onButtonBoxClicked()
                     ui->stackedWidget->setCurrentIndex(2);
                     ui->pushButton->setVisible(true);
                     ui->buttonBox->button(QDialogButtonBox::Ok)->setText(QStringFromLocalOrUtf8("下一步"));
+                    ui->otherToolButton->setStyleSheet("color: blue;");
+                    ui->instrumentToolButton->setStyleSheet("color: black;");
                     step=2;
 
                 }
@@ -220,6 +234,22 @@ void SettingDialog::onButtonBoxClicked()
         }
 
     }
+
+    if (step == 2) {
+            ui->stackedWidget->setCurrentIndex(2);
+            ui->otherToolButton->setStyleSheet("color: blue;");
+            ui->instrumentToolButton->setStyleSheet("color: black;");
+
+            QString taskList=Database::getDatabase()->getConfig("taskList");
+            ui->taskTextEdit->setPlainText(taskList);
+            ui->buttonBox->button(QDialogButtonBox::Ok)->setText(QStringFromLocalOrUtf8("下一步"));
+            step = 3;
+        } else if (step == 3) {
+            QString taskList=ui->taskTextEdit->toPlainText().trimmed();
+            qDebug() << "taskList="<<taskList;
+            Database::getDatabase()->setConfig("taskList",taskList);
+            accept(); // 关闭对话框
+        }
 }
 
 void SettingDialog::onButtonTestClicked()
@@ -270,12 +300,14 @@ void SettingDialog::getInstrumentList(QString input){
     QString keyword = ui->keyWord->text();
     QUrlQuery postData;
     postData.addQueryItem("keyword", keyword);
+    postData.addQueryItem("page","1");
+    postData.addQueryItem("pagesize","20");
     httpUtil->postAsyn(machineUrl, postData, [=](int status,int code, QString msg, QJsonObject result) {
         if (code == 1) {
             QJsonValue data = result.value("data");
             if (data.isObject()) {
                 QJsonObject dataObject = data.toObject();
-                QJsonArray itemsArray = dataObject["items"].toArray();
+                QJsonArray itemsArray = dataObject["list"].toArray();
                 initTableWidget(itemsArray,true);
                 initDefaultMachine();
 
@@ -313,7 +345,7 @@ void SettingDialog::initTableWidget(const QJsonArray& itemsArray, bool adjustTab
 
         QTableWidgetItem* nameItem = new QTableWidgetItem(name);
         QTableWidgetItem* orgNameItem = new QTableWidgetItem(orgName);
-        QTableWidgetItem* adminIdsItem = new QTableWidgetItem(adminIds);
+        QTableWidgetItem* adminIdsItem = new QTableWidgetItem(number);
         QRadioButton* radioButton = new QRadioButton();
         // 添加单选框到单元格
         tableWidget->setCellWidget(i, 0, radioButton);
@@ -405,18 +437,34 @@ void SettingDialog::initDefaultMachine(){
 
 void SettingDialog::on_pushButton_clicked()
 {
+    qDebug() << "step===="<<step;
     ui->buttonBox->button(QDialogButtonBox::Ok)->setText(QStringFromLocalOrUtf8("下一步"));
     if(step==1){
         ui->stackedWidget->setCurrentIndex(0);
         ui->pushButton->setVisible(false);
+        ui->serverToolButton->setStyleSheet("color: blue;");
+        ui->instrumentToolButton->setStyleSheet("color: black;");
+
         step=0;
-    }else if(step==2){
+    }else{
         step=1;
         ui->pushButton->setVisible(true);
         ui->stackedWidget->setCurrentIndex(1);
+        ui->instrumentToolButton->setStyleSheet("color: blue;");
+        ui->otherToolButton->setStyleSheet("color: black;");
+
     }
-    ui->serverToolButton->setChecked(true);
-    ui->instrumentToolButton->setChecked(false);
+//    ui->serverToolButton->setChecked(true);
+//    ui->instrumentToolButton->setChecked(false);
 
 
+}
+
+void SettingDialog::on_searchMachine_clicked()
+{
+    qDebug() << "**********************";
+
+    QString url=ui->urlEdit->text();
+    url=url+"/api/pc";
+    getInstrumentList(url);
 }

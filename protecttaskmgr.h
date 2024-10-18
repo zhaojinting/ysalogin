@@ -1,4 +1,4 @@
-﻿#ifndef PROTECTTASKMGR_H
+#ifndef PROTECTTASKMGR_H
 #define PROTECTTASKMGR_H
 
 
@@ -20,7 +20,7 @@ class ProtectTaskmgr : public QThread
 {
     Q_OBJECT
 public:
-    explicit ProtectTaskmgr();
+    explicit ProtectTaskmgr(QObject *parent = nullptr);
     void run();
     //返回桌面应用列表
     QList<WindowInfo> getWindowHandleList();

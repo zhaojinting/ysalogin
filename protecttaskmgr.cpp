@@ -1,4 +1,4 @@
-﻿#include "protecttaskmgr.h"
+#include "protecttaskmgr.h"
 
 #include"QDebug.h"
 
@@ -17,7 +17,7 @@ BOOL CALLBACK EnumWindowsProc(HWND hwnd, LPARAM lParam) {
     return TRUE; // 继续枚举
 }
 
-ProtectTaskmgr::ProtectTaskmgr()
+ProtectTaskmgr::ProtectTaskmgr(QObject *parent) : QThread(parent)
 {
 
 }
