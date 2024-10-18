@@ -219,7 +219,7 @@ void SettingDialog::onButtonBoxClicked()
                     //message.alert(this, QStringFromLocalOrUtf8("初始化数据成功！"));
                     //accept();
                 }else{
-                    message.alert(this, QStringFromLocalOrUtf8("绑定设备失败！"));
+                    //message.alert(this, QStringFromLocalOrUtf8("绑定设备失败！"));
                     ui->stackedWidget->setCurrentIndex(2);
                     ui->pushButton->setVisible(true);
                     ui->buttonBox->button(QDialogButtonBox::Ok)->setText(QStringFromLocalOrUtf8("下一步"));
@@ -239,15 +239,31 @@ void SettingDialog::onButtonBoxClicked()
             ui->stackedWidget->setCurrentIndex(2);
             ui->otherToolButton->setStyleSheet("color: blue;");
             ui->instrumentToolButton->setStyleSheet("color: black;");
-
+            //设置二次打开时，填写的值
             QString taskList=Database::getDatabase()->getConfig("taskList");
             ui->taskTextEdit->setPlainText(taskList);
+            //设置二次打开时是否启用按钮的状态
+            QString isCheckedStr = Database::getDatabase()->getConfig("isTaskChecked");
+            bool isChecked = (isCheckedStr.toLower() == "true");
+            ui->tackCheck->setChecked(isChecked);
+
+
             ui->buttonBox->button(QDialogButtonBox::Ok)->setText(QStringFromLocalOrUtf8("下一步"));
             step = 3;
         } else if (step == 3) {
             QString taskList=ui->taskTextEdit->toPlainText().trimmed();
             qDebug() << "taskList="<<taskList;
+            //bool isChecked = ui->tackCheck->isChecked();
+            //qDebug() << "isChecked="<<isChecked;
+            bool isChecked = ui->tackCheck->isChecked();
+            qDebug() << "isChecked="<<isChecked;
+            //存储用户填入的软件exe名称
             Database::getDatabase()->setConfig("taskList",taskList);
+
+            QString isCheckedStr = isChecked ? "true" : "false";
+            //存储用户是否启用该功能
+            Database::getDatabase()->setConfig("isTaskChecked", isCheckedStr);
+
             accept(); // 关闭对话框
         }
 }
@@ -394,6 +410,10 @@ bool SettingDialog::bindMachine(QString url,QString number,QString mac){
     QUrlQuery postData;
     postData.addQueryItem("number", number);
     postData.addQueryItem("mac", mac);
+
+    qDebug()<< "number===" <<number;
+    qDebug()<< "mac===" <<mac;
+
     if(number.isEmpty() || mac.isEmpty()){
         message.alert(this, QStringFromLocalOrUtf8("绑定设备失败，获取信息异常"));
     }else{

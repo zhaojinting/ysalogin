@@ -353,11 +353,24 @@ QPushButton::checked {
        <x>30</x>
        <y>60</y>
        <width>451</width>
-       <height>281</height>
+       <height>251</height>
       </rect>
      </property>
      <property name="styleSheet">
       <string notr="true">background-color: rgb(255, 255, 255);</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="tackCheck">
+     <property name="geometry">
+      <rect>
+       <x>390</x>
+       <y>330</y>
+       <width>91</width>
+       <height>19</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>是否启用</string>
      </property>
     </widget>
    </widget>
