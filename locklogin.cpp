@@ -454,9 +454,12 @@ void LockLogin::on_loginButton_clicked()
       QString loginUrl=Settings::getServers()+"/loginbypw";
       QString account=exUI->accountEdit->text();
       QString password=exUI->passwordEdit->text();
+
+      QString instrumentId=Database::getDatabase()->getConfig("instrumentId");
       QUrlQuery postData;
       postData.addQueryItem("account", account);
       postData.addQueryItem("password", password);
+      postData.addQueryItem("number",instrumentId);
       if(account.isEmpty() || password.isEmpty()){
            message.alert(m_mainWindow, QStringFromLocalOrUtf8("账号或密码不能为空！"));
            return;
